@@ -1,29 +1,23 @@
 import random
-
-def guess_number(X, Y):
-    random_number = random.randint(X, Y)
-    print(f"I'm thinking of a number between {X} and {Y}. Can you guess what it is?")
-
-    num_guesses = 0
-    guess = None
-
-    while guess != random_number:
-        try:
-            guess = int(input("Enter your guess: "))
-            num_guesses += 1
-
-            if guess < random_number:
-                print("Too low! Try a higher number.")
-            elif guess > random_number:
-                print("Too high! Try a lower number.")
-            else:
-                print(f"Congratulations! You guessed the number {random_number} in {num_guesses} guesses.")
+def main():
+    min_num=int(input("Enter the minimum number:"))
+    max_num=int(input("Enter the maximum number:"))
+    value=random.randint(min_num,max_num)
+    count=1
+    max_attemtps=5
+    while count<=max_attemtps:
+      unum=int(input("Guess a number:"))
+      if(unum==value):
+        print("Success!")
+        break
+      elif(unum>value):
+        print('Too high')
+      else:
+        print("Too low")
+      count+=1
         
-        except ValueError:
-            print("Invalid input! Please enter a valid integer.")
-
-if __name__ == "__main__":
-    X = 1  
-    Y = 100 
-    guess_number(X, Y)
-
+    if(count>max_attemtps):
+        print("You have reached maximum attemtps")
+    print(f"This is value:",value)
+    
+main()
